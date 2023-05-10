@@ -9,7 +9,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity // CONFIGURAR JAVA
+@Entity
 @Table(name = "tb_game")
 public class Game {
 
@@ -27,24 +27,24 @@ public class Game {
 	
 	@Column(columnDefinition = "TEXT")
 	private String shortDescription;
+
 	@Column(columnDefinition = "TEXT")
 	private String longDescription;
 	
-	public Game() {
-	}
-
-	public Game(Long id, String title, Integer year, String genre, String platforms,Double score, String imgUrl,
+    public Game() {
+    }
+    
+	public Game(Long id, String title, Integer year, String genre, String platforms, Double score, String imgUrl,
 			String shortDescription, String longDescription) {
-		super();
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.genre = genre;
 		this.platforms = platforms;
-		this.score =  score;
+		this.score = score;
 		this.imgUrl = imgUrl;
 		this.shortDescription = shortDescription;
-		this.longDescription = longDescription;
+		this.longDescription = longDescription;		
 	}
 
 	public Long getId() {
@@ -83,16 +83,18 @@ public class Game {
 		return platforms;
 	}
 
-	public void setPlatforms(String platform) {
-		this.platforms = platform;
+	public void setPlatforms(String platforms) {
+		this.platforms = platforms;
 	}
 
 	public Double getScore() {
 		return score;
 	}
+
 	public void setScore(Double score) {
 		this.score = score;
 	}
+
 	public String getImgUrl() {
 		return imgUrl;
 	}
@@ -133,6 +135,4 @@ public class Game {
 		Game other = (Game) obj;
 		return Objects.equals(id, other.id);
 	}
-	
 }
-
