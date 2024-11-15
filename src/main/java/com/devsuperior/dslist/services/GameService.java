@@ -10,7 +10,6 @@ import com.devsuperior.dslist.dto.GameDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
 import com.devsuperior.dslist.entities.Game;
 import com.devsuperior.dslist.projections.GameMinProjection;
-import com.devsuperior.dslist.repositories.GameListRepository;
 import com.devsuperior.dslist.repositories.GameRepository;
 
 
