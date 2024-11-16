@@ -6,10 +6,10 @@ import jakarta.persistence.Embeddable;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 
-@Embeddable // ENCAPSULANDO DOIS ATRIBUTOS PARA BUSCA
+@Embeddable
 public class BelongingPK {
 
-	@ManyToOne // MUITOS PARA UM
+	@ManyToOne
 	@JoinColumn(name = "game_id")
 	private Game game;
 	

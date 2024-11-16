@@ -23,15 +23,16 @@ public class GameListService {
 	@Autowired
 	private GameRepository gameRepository;
 	
-	@Transactional(readOnly = true) // assegurando que eu não vou fazer nenhuma operação de escrita, não bloqueando o banco
+	@Transactional(readOnly = true)
 	public List<GameListDTO> findAll(){
 		List<GameList>result = gameListRepository.findAll();
-		return result.stream().map(x -> new GameListDTO(x)).toList(); // MAP TRANSFORMAR OBJETOS DE UMA COISA PARA OUTRA
+		return result.stream().map(x -> new GameListDTO(x)).toList();
 		
 	}
 	@Transactional
 	public void move(Long listId, int sourceIndex, int destinationIndex) {
 		List<GameMinProjection> list = gameRepository.searchByList(listId);
+		
 		GameMinProjection obj =  list.remove(sourceIndex);
 		list.add(destinationIndex, obj);
 		
@@ -42,6 +43,14 @@ public class GameListService {
 			gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
 			
 		}
+		System.out.println("Source Index: " + sourceIndex);
+		System.out.println("Destination Index: " + destinationIndex);
+
 	}
 	
+	@Transactional(readOnly = true)
+	public GameListDTO findById(Long id) {
+		GameList entity = gameListRepository.findById(id).get();
+		return new GameListDTO(entity);
+	}
 }
