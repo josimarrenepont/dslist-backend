@@ -43,8 +43,6 @@ public class GameListService {
 			gameListRepository.updateBelongingPosition(listId, list.get(i).getId(), i);
 			
 		}
-		System.out.println("Source Index: " + sourceIndex);
-		System.out.println("Destination Index: " + destinationIndex);
 
 	}
 	

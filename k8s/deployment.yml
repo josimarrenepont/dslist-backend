@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dslist-deployment
+  labels:
+    app: dslist
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: dslist
+  template:
+    metadata:
+      labels:
+        app: dslist
+    spec:
+      containers:
+      - name: dslist-app
+        image: jnrenepont/dslist:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: SPRING_PROFILES_ACTIVE
+          value: prod
+        - name: DB_URL
+          value: jdbc:postgresql://db:5432/dslist
+        - name: DB_USERNAME
+          value: postgres
+        - name: DB_PASSWORD
+          value: 07111519
