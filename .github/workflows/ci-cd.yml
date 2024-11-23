@@ -37,7 +37,7 @@ jobs:
 
       - name: Build and Push Docker Image
         run: |
-          docker build -f path/to/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/dslist:latest .
+          docker build -f dslist/Dockerfile -t ${{ secrets.DOCKER_USERNAME }}/dslist:latest .
           docker push ${{ secrets.DOCKER_USERNAME }}/dslist:latest
 
   deploy:
