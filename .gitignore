@@ -1,5 +1,10 @@
-HELP.md
+# Ignorar a pasta target
 target/
+
+# Não ignorar Dockerfile na pasta dslist/
+!dslist/Dockerfile
+
+# Outras regras do .gitignore
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
 !**/src/test/**/target/
