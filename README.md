@@ -31,6 +31,19 @@ O sistema organiza uma base de dados de jogos, incluindo listas categorizadas po
 
 * Banco de dados: PostgreSQL
 
+# Esteira CI/CD com Kubernetes
+## Para o deploy automático da aplicação no Kubernetes com o GitHub Actions.
+
+1. Configuração do Kubernetes
+Este projeto utiliza o Docker Desktop com Kubernetes para rodar a aplicação localmente. Para que o GitHub Actions consiga realizar o deploy no Kubernetes, você deve configurar o arquivo kubeconfig e armazená-lo como um Secret no GitHub.
+
+### Problema de Conexão Local com Docker Desktop
+#### Atualmente, o pipeline de deploy no Kubernetes está configurado para se conectar ao Docker Desktop local, mas a conexão não está sendo estabelecida corretamente devido a um erro relacionado ao uso do localhost e da configuração do kubeconfig. Esse problema pode ocorrer, pois o Docker Desktop está tentando se conectar ao localhost dentro do ambiente do GitHub Actions, onde a configuração de rede pode não ser compatível.
+
+### Resolução
+#### Uma solução alternativa seria utilizar um serviço gerenciado de Kubernetes como o Google Kubernetes Engine (GKE), Amazon Elastic Kubernetes Service (EKS) ou Azure Kubernetes Service (AKS), que são serviços em nuvem pagos, mas que oferecem infraestrutura de Kubernetes escalável e totalmente gerenciada.
+#### Esses serviços permitem que você faça o deploy da aplicação diretamente em um cluster Kubernetes hospedado na nuvem, o que resolve o problema de conexão local.
+
 ### import.sql
 ```bash
   INSERT INTO tb_game_list (name) VALUES ('Aventura e RPG');
