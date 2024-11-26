@@ -1,31 +1,25 @@
+version: "3.8"
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: jnrenepont/dslist:latest
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: dev
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/dslist
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 07111519
+
   db:
     image: postgres:14
-    container_name: dslist-db
-    environment:
-      POSTGRES_DB: dslist
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 07111519
     ports:
       - "5432:5432"
     networks:
       - dslist-network
-
-  api:
-    image: jnrenepont/dslist:latest
-    container_name: dslist-api
     environment:
-      SPRING_PROFILES_ACTIVE: dev
-      DB_URL: jdbc:postgresql://dslist-db:5432/dslist
-      DB_USERNAME: postgres
-      DB_PASSWORD: 07111519
-    ports:
-      - "8080:8080"
-    depends_on:
-      - db
-    networks:
-      - dslist-network
-
-networks:
-  dslist-network:
-    driver: bridge
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 07111519
+      POSTGRES_DB: dslist
