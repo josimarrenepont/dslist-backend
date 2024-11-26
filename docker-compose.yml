@@ -8,6 +8,8 @@ services:
       POSTGRES_DB: dslist
     ports:
       - "5432:5432"
+    networks:
+      - dslist-network
 
   app:
     build: .
@@ -21,3 +23,9 @@ services:
       SPRING_DATASOURCE_PASSWORD: 07111519
     depends_on:
       - db
+    networks:
+      - dslist-network
+
+networks:
+  dslist-network:
+    driver: bridge
