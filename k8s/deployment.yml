@@ -27,5 +27,5 @@ spec:
         - name: SPRING_DATASOURCE_USERNAME
           value: "postgres"
         - name: SPRING_DATASOURCE_PASSWORD
-          value: "07111519"
+          value: "2801190225"
 
