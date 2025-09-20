@@ -12,7 +12,7 @@ services:
       SPRING_PROFILES_ACTIVE: dev
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/dslist
       SPRING_DATASOURCE_USERNAME: postgres
-      SPRING_DATASOURCE_PASSWORD: 07111519
+      SPRING_DATASOURCE_PASSWORD: 2801190225
     depends_on:
       - db
     networks:
@@ -24,7 +24,7 @@ services:
       - "5432:5432"
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: 07111519
+      POSTGRES_PASSWORD: 2801190225
       POSTGRES_DB: dslist
     networks:
       - dslist-network

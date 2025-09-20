@@ -32,7 +32,7 @@ public class GameListController {
         this.gameService = gameService;
     }
 
-	@GetMapping(value = "/{listId}/games")
+	@GetMapping(value = "/games")
 	@Operation(summary = "Buscar jogos por lista", description = "Retorna todos os jogos que pertencem a uma lista específica.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "200", description = "Jogos encontrados com sucesso"),
