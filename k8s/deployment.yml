@@ -21,11 +21,11 @@ spec:
         - containerPort: 8080
         env:
         - name: SPRING_PROFILES_ACTIVE
-          value: dev
-        - name: DB_URL
+          value: "dev"
+        - name: SPRING_DATASOURCE_URL
           value: jdbc:postgresql://db:5432/dslist
-        - name: DB_USERNAME
-          value: postgres
-        - name: DB_PASSWORD
-          value: 07111519
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "postgres"
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "07111519"
 

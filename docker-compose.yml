@@ -1,3 +1,5 @@
+version: "3.9"
+
 services:
   app:
     build:
@@ -11,17 +13,21 @@ services:
       SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/dslist
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: 07111519
+    depends_on:
+      - db
+    networks:
+      - dslist-network
 
   db:
     image: postgres:14
     ports:
       - "5432:5432"
-    networks:
-      - dslist-network
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 07111519
       POSTGRES_DB: dslist
+    networks:
+      - dslist-network
 
 networks:
   dslist-network:
