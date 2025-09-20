@@ -2,6 +2,7 @@
 
 ## Este projeto tem como objetivo ilustrar uma coleção de jogos, destacando suas pontuações e principais características, como gênero, ano de lançamento, plataformas disponíveis e descrições.
 
+---
 ### Objetivo do Projeto
 O sistema organiza uma base de dados de jogos, incluindo listas categorizadas por gênero e informações detalhadas de cada título. 
 #### Cada jogo apresenta:
@@ -11,13 +12,15 @@ O sistema organiza uma base de dados de jogos, incluindo listas categorizadas po
   * Plataformas — disponíveis para Xbox, Playstation, PC.
   * Descrições — breve e longa, para melhor entendimento do conteúdo e história do jogo
 
+---
 ## Benefícios para o Usuário
 ### A organização clara facilita a navegação pelo catálogo e oferece uma visão completa sobre a qualidade e popularidade dos jogos selecionados, permitindo que o usuário explore diferentes gêneros de forma prática e intuitiva.
 
-
+---
 ## Modelo Conceitual
 ![UML_dslist](https://github.com/user-attachments/assets/e78ab9dc-6386-48b9-8caa-99ec05678f7d)
 
+---
 # Tecnologias utilizadas
 
 ## Back End
@@ -27,6 +30,7 @@ O sistema organiza uma base de dados de jogos, incluindo listas categorizadas po
 * JPA / Hibernate
 * Maven
 
+---
 # Implantação em produção
 
 * Banco de dados: PostgreSQL
@@ -73,3 +77,16 @@ INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 9, 3);
 INSERT INTO tb_belonging (list_id, game_id, position) VALUES (2, 10, 4);
 
 ```
+---
+
+### Documentação da API (Swagger UI)
+
+A documentação interativa da API, gerada com **Swagger UI (Springdoc OpenAPI)**, permite explorar e testar todos os endpoints disponíveis do projeto.
+
+Para acessá-la, certifique-se de que a aplicação está em execução localmente e navegue para o seguinte endereço no seu navegador:
+
+**URL de acesso:** `http://localhost:8080/swagger-ui.html`
+
+*Se o seu servidor estiver rodando em uma porta diferente, ajuste a URL conforme necessário.*
+
+---
