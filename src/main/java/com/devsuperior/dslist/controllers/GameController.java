@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -41,8 +43,8 @@ public class GameController {
 	@GetMapping
 	@Operation(summary = "Listar todos os jogos", description = "Retorna a lista completa de jogos cadastrados.")
 	@ApiResponse(responseCode = "200", description = "Lista retornada com sucesso")
-	public ResponseEntity<List<GameMinDTO>> findAll() {
-		List<GameMinDTO> list = gameService.findAll();
+	public ResponseEntity<Page<GameMinDTO>> findAll(Pageable pageable) {
+		Page<GameMinDTO> list = gameService.findAll(pageable);
 		return ResponseEntity.ok(list);
 	}
 	@GetMapping("/list/{listId}")

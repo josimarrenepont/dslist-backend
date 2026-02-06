@@ -50,16 +50,15 @@ public class GameListController {
 	}
 
 	@PostMapping(value = "/{listId}/replacement")
-	@Operation(summary = "Mover jogo na lista", description = "Reordena os jogos de uma lista trocando a posição entre dois índices.")
+	@Operation(summary = "Mover jogo na lista", description = "Reordena os jogos de uma " +
+			"lista trocando a posição entre dois índices.")
 	@ApiResponses(value = {
 			@ApiResponse(responseCode = "204", description = "Ordem atualizada com sucesso"),
 			@ApiResponse(responseCode = "400", description = "Índices inválidos fornecidos"),
 			@ApiResponse(responseCode = "404", description = "Lista não encontrada")
 	})
-	public ResponseEntity<Void> move(@PathVariable Long listId, @RequestParam int sourceIndex,
-									 @RequestParam int destinationIndex) {
-
-		gameListService.move(listId, sourceIndex, destinationIndex);
+	public ResponseEntity<Void> move(@PathVariable Long listId, @RequestBody ReplacementDTO dto) {
+		gameListService.move(listId, dto.sourceIndex(), dto.destinationIndex());
 		return ResponseEntity.noContent().build();
 	}
 }

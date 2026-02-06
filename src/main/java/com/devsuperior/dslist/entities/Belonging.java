@@ -15,14 +15,17 @@ public class Belonging {
 	
 	private Integer position;
 
-	public Belonging(Game game, GameList list, Integer position) {
+    public Belonging() {
+    }
+
+    public Belonging(Game game, GameList list, Integer position) {
 		super();
 		id.setGame(game);
 		id.setList(list);
 		this.position = position;
 	}
 
-	public BelongingPK getId() {
+    public BelongingPK getId() {
 		return id;
 	}
 

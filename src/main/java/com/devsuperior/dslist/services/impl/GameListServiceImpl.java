@@ -36,7 +36,10 @@ public class GameListServiceImpl implements GameListService {
 	@Transactional
 	public void move(Long listId, int sourceIndex, int destinationIndex) {
 		List<GameMinProjection> list = gameRepository.searchByList(listId);
-		
+
+				if(sourceIndex <0 || destinationIndex >= list.size()){
+					throw new ResourceNotFoundException("Invalid indices for the list size: " + list.size());
+				}
 		GameMinProjection obj =  list.remove(sourceIndex);
 		list.add(destinationIndex, obj);
 		

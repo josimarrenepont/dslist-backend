@@ -16,22 +16,34 @@ import jakarta.servlet.http.HttpServletRequest;
 public class ControllerExceptionHandler {
 	
 	@ExceptionHandler(ResourceNotFoundException.class)
-	public ResponseEntity<StandardError> exceptionHandler(ResourceNotFoundException e, HttpServletRequest request){
-		
-		String error = "Resource not found";
+	public ResponseEntity<StandardError> resourceNotFound
+			(ResourceNotFoundException e, HttpServletRequest request){
+
 		HttpStatus status = HttpStatus.NOT_FOUND;
-		StandardError err = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+		String error = "Resource not found";
+		StandardError err = new StandardError(Instant.now(), status.value(), error,
+				e.getMessage(), request.getRequestURI());
 		
-		return ResponseEntity.ok().body(err);
+		return ResponseEntity.status(status).body(err);
 	}
 	
 	@ExceptionHandler(DatabaseException.class)
 	public ResponseEntity<StandardError> database(DatabaseException e, HttpServletRequest request){
-		
-		String error = "Database error";
+
 		HttpStatus status = HttpStatus.BAD_REQUEST;
-		StandardError dataError = new StandardError(Instant.now(), status.value(), error, e.getMessage(), request.getRequestURI());
+		String error = "Database error";
+		StandardError dataError = new StandardError(Instant.now(), status.value(),
+				error, e.getMessage(), request.getRequestURI());
 		
-		return ResponseEntity.ok().body(dataError);
+		return ResponseEntity.status(status).body(dataError);
  }
+
+ 	@ExceptionHandler(IndexOutOfBoundsException.class)
+	public ResponseEntity<StandardError> indexOutOfBounds(IndexOutOfBoundsException e, HttpServletRequest request){
+		HttpStatus status = HttpStatus.BAD_REQUEST;
+		String error = "Invalid list index";
+		StandardError err = new StandardError(Instant.now(), status.value(), error,
+				e.getMessage(), request.getRequestURI());
+		return ResponseEntity.status(status).body(err);
+	}
 }

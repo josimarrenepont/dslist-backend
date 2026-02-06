@@ -3,11 +3,10 @@ package com.devsuperior.dslist.services.impl;
 import java.util.List;
 
 import com.devsuperior.dslist.services.GameService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.PathVariable;
 
 import com.devsuperior.dslist.dto.GameDTO;
 import com.devsuperior.dslist.dto.GameMinDTO;
@@ -36,9 +35,9 @@ public class GameServiceImpl implements GameService {
 	}
 	@Override
 	@Transactional(readOnly = true)
-	public List<GameMinDTO> findAll(){
-		List<Game>result = gameRepository.findAll();
-		return result.stream().map(GameMinDTO::new).toList();
+	public Page<GameMinDTO> findAll(Pageable pageable){
+		Page<Game>result = gameRepository.findAll(pageable);
+		return result.map(GameMinDTO::new);
 		
 	}
 	@Override

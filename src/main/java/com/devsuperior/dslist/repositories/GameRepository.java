@@ -11,13 +11,13 @@ import com.devsuperior.dslist.projections.GameMinProjection;
 public interface GameRepository extends JpaRepository<Game, Long>{
 
 	@Query(nativeQuery = true, value = """
-			SELECT tb_game.id, tb_game.title, tb_game.game_year AS gameYear, tb_game.img_url AS imgUrl,
-			tb_game.short_description AS shortDescription, tb_belonging.position
-			FROM tb_game
-			INNER JOIN tb_belonging ON tb_game.id = tb_belonging.game_id
-			WHERE tb_belonging.list_id = :listId
-			ORDER BY tb_belonging.position
-				""")
+        SELECT g.id, g.title, g.game_year AS gameYear, g.img_url AS imgUrl,
+               g.short_description AS shortDescription, b.position
+        FROM tb_game g
+        INNER JOIN tb_belonging b ON g.id = b.game_id
+        WHERE b.list_id = :listId
+        ORDER BY b.position
+        """)
 	List<GameMinProjection> searchByList(Long listId);
 	
 }
